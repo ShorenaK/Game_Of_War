@@ -1,19 +1,23 @@
 
 let button = document.getElementById("draw-cards")
 
+function handleClick(){
+    fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+    .then((res)=> res.json())
+    .then((data) => console.log(data))
+}
 
-button.addEventListener("click", function(e){
-     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
-     .then((res)=> res.json())
-     .then((data) => console.log(data))
-})
+button.addEventListener("click", handleClick)
 
+function setTime(){
+    
+        console.log("I finally ran!")
+        
+}
 
+// functin are a first-class object in JS
 
-
-
-
-
+setTimeout(setTime, 5000)
 
 
 
