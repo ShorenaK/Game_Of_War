@@ -1,4 +1,4 @@
-let deckId = ''
+let deckId
 // let deckId  either or will work. 
 
 let newDeckbutton = document.getElementById("new-deck")
@@ -8,18 +8,18 @@ function handleClick(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
     
     .then((res)=> res.json())
-    .then((data) => console.log(data))
+    .then((data) => { console.log(data)
       deckId = data.deck_id
+     } )
 }
 
 newDeckbutton.addEventListener("click", handleClick)
 
-drawCardbutton.addEventListener
-
-
-
-
-
+drawCardbutton.addEventListener("click", function(){
+    fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+})
 
 
 
