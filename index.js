@@ -26,26 +26,43 @@ const people =[
     { name: "Bob", hasPet: false },
 ]
 
-
-
 function filterArray(array, callback){
-    const resultingArray = []
-    for (let i = 0 ; i < array.length; i ++){
-       const result =  callback(array[i])
-       if(result){
-        // resultingArray[array[i]]
-        resultingArray.push(array[i])
-       }
+    const newArray = []
+    for (let item in array) { 
+    const shoulBeIncluded = callback(item)
+       if(shoulBeIncluded){
+      newArray.push(item)  
     }
-   
-     return resultingArray
+}
+    return newArray
 }
 
-
-const peoplewithPets = filterArray(people,function callback(person){
+const result = filterArray(people, person =>{
     return person.hasPet === true 
-} )
-console.log(peoplewithPets)
+})
+
+console.log(result)
+
+
+
+// function filterArray(array, callback){
+//     const resultingArray = []
+//     for (let i = 0 ; i < array.length; i ++){
+//        const result =  callback(array[i])
+//        if(result){
+//         // 
+//         resultingArray.push(array[i])
+//        }
+//     }
+   
+//      return resultingArray
+// }
+
+
+// const peoplewithPets = filterArray(people,function (person){
+//     return person.hasPet === true 
+// } )
+// console.log(peoplewithPets)
 
 
 
