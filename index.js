@@ -16,7 +16,7 @@ function setTime(){
 }
 
 // functin are a first-class object in JS
-
+// if we put setTime() we are calling right the way
 setTimeout(setTime, 5000)
 
 
