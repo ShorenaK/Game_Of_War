@@ -3,6 +3,7 @@ let deckId
 
 let newDeckbutton = document.getElementById("new-deck")
 let drawCardbutton = document.getElementById("draw-cards")
+let cardDiv = document.getElementById("card")
 
 function handleClick(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -12,13 +13,17 @@ function handleClick(){
       deckId = data.deck_id
      } )
 }
-
 newDeckbutton.addEventListener("click", handleClick)
 
 drawCardbutton.addEventListener("click", function(){
     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => { 
+        console.log(data) 
+       cardDiv.innerHTML = `<img src= "${data.cards[0].image}" class= "cards" />
+       <img src= "${data.cards[1].image}" class= "cards"/>  `
+
+    })
 })
 
 
