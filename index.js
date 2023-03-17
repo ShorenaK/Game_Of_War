@@ -19,14 +19,33 @@ function setTime(){
 // if we put setTime() we are calling right the way
 setTimeout(setTime, 5000)
 
+const people =[
+    { name: "Jack", hasPet: true },
+    { name: "Jill", hasPet: false },
+    { name: "Alice", hasPet: true },
+    { name: "Bob", hasPet: false },
+]
 
 
 
+function filterArray(array, callback){
+    const resultingArray = []
+    for (let i = 0 ; i < array.length; i ++){
+       const result =  callback(array[i])
+       if(result){
+        // resultingArray[array[i]]
+        resultingArray.push(array[i])
+       }
+    }
+   
+     return resultingArray
+}
 
 
-
-
-
+const peoplewithPets = filterArray(people,function callback(person){
+    return person.hasPet === true 
+} )
+console.log(peoplewithPets)
 
 
 
