@@ -18,10 +18,10 @@ let remainingText = document.getElementById("remaining")
 }
 newDeckbutton.addEventListener("click", handleClick)
 
-drawCardbutton.addEventListener("click", function(){
-    fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
-    .then(res => res.json())
-    .then(data => { 
+drawCardbutton.addEventListener("click", async function(){
+    const res = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+    let data = await res.json()
+       
         remainingText.textContent = `Remaining cards: ${data.remaining}`
        cardDiv.children[0].innerHTML = `
          <img src= "${data.cards[0].image}" class= "card" />  
@@ -41,8 +41,8 @@ drawCardbutton.addEventListener("click", function(){
      }else{
         headerh2.textContent = "It's a tie game!"
      }
-    })
-})
+    }
+)
 function determineCardWinner(card1, card2){
     const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", 
                         "10", "JACK", "QUEEN", "KING", "ACE"]
@@ -52,11 +52,11 @@ function determineCardWinner(card1, card2){
    if(card1ValueIndex > card2ValueIndex){
      computerScore ++ 
       computerScoreEl.textContent =  `Computer score: ${computerScore}`
-        return   ` "Computer winns" `
+        return    `"Computer scored" `
     }else if(card1ValueIndex < card2ValueIndex){
         myScore ++ 
         myScoreEl.textContent = `My score: ${myScore}`
-        return  ` "You are the winner" `
+        return  `"You scored" `
     }else {
         return ` "It's a tie game!" `
     }
