@@ -10,14 +10,11 @@ let cardDiv = document.getElementById("cards")
 let headerh2 = document.getElementById("header")
 let remainingText = document.getElementById("remaining")
 
-function handleClick(){
-    fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
-    
-    .then((res)=> res.json())
-    .then((data) => { 
+ async function handleClick(){
+    const res = await fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+    const data = await res.json()
       deckId = data.deck_id
-      remainingText.textContent = `Remaining cards: ${data.remaining}`
-     } )
+      remainingText.textContent = `Remaining cards: ${data.remaining}`  
 }
 newDeckbutton.addEventListener("click", handleClick)
 
