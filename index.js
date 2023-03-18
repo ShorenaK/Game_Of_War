@@ -1,7 +1,8 @@
 let deckId
 let myScore = 0 
 let computerScore = 0 
-// let deckId  either or will work. 
+const computerScoreEl = document.getElementById("computer-score")
+const myScoreEl = document.getElementById("my-score")
 
 let newDeckbutton = document.getElementById("new-deck")
 let drawCardbutton = document.getElementById("draw-cards")
@@ -16,10 +17,8 @@ function handleClick(){
     .then((data) => { 
       deckId = data.deck_id
       remainingText.textContent = `Remaining cards: ${data.remaining}`
-      console.log(data)
      } )
 }
-
 newDeckbutton.addEventListener("click", handleClick)
 
 drawCardbutton.addEventListener("click", function(){
@@ -44,7 +43,10 @@ function determineCardWinner(card1, card2){
                         "10", "JACK", "QUEEN", "KING", "ACE"]
     const card1ValueIndex = valueOptions.indexOf(card1.value)
     const card2ValueIndex = valueOptions.indexOf(card2.value)
-    if(card1ValueIndex > card2ValueIndex){
+    
+    if(data.remaining === 0 ){
+        drawCardbutton.disabled = true
+    }if(card1ValueIndex > card2ValueIndex){
         return   ` "card1 is winner" `
     }else if(card1ValueIndex < card2ValueIndex){
         return  ` "card2 is winner" `
@@ -52,11 +54,6 @@ function determineCardWinner(card1, card2){
         return ` "it's tie" `
     }
 }
-
-
-
-// const computerScoreEl = document.getElementById("computer-score")
-// const myScoreEl = document.getElementById("my-score")
 
 
 // drawCardBtn.addEventListener("click", () => {
