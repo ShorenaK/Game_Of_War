@@ -38,11 +38,11 @@ drawCardbutton.addEventListener("click", function(){
      if(data.remaining === 0 ){
          drawCardbutton.disabled = true
      }if(computerScore > myScore){
-        headerh2.textContent = ` "Computer winns" `
+        headerh2.textContent = "The computer won the game!"
      }else if(myScore > computerScore){
-        headerh2.textContent = ` "You are the winner" `
+        headerh2.textContent = "You won the game!"
      }else{
-        ` "War" `
+        headerh2.textContent = "It's a tie game!"
      }
     })
 })
