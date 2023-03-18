@@ -6,6 +6,8 @@ let computerScore = 0
 let newDeckbutton = document.getElementById("new-deck")
 let drawCardbutton = document.getElementById("draw-cards")
 let cardDiv = document.getElementById("cards")
+let headerh2 = document.getElementById("header")
+let remainingText = document.getElementById("remaining")
 
 function handleClick(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -13,61 +15,49 @@ function handleClick(){
     .then((res)=> res.json())
     .then((data) => { 
       deckId = data.deck_id
+      remainingText.textContent = `Remaining cards: ${data.remaining}`
+      console.log(data)
      } )
 }
+
 newDeckbutton.addEventListener("click", handleClick)
 
 drawCardbutton.addEventListener("click", function(){
     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
     .then(res => res.json())
     .then(data => { 
+        remainingText.textContent = `Remaining cards: ${data.remaining}`
        cardDiv.children[0].innerHTML = `
          <img src= "${data.cards[0].image}" class= "card" />  
        `
+       remainingText.textContent = `Remaining cards: ${data.remaining}`
        cardDiv.children[1].innerHTML = `
          <img src= "${data.cards[1].image}" class= "card" />  
      `   
+     headerh2.textContent = determineCardWinner(data.cards[0], data.cards[1])
+     
     })
 })
+
 function determineCardWinner(card1, card2){
     const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", 
                         "10", "JACK", "QUEEN", "KING", "ACE"]
     const card1ValueIndex = valueOptions.indexOf(card1.value)
     const card2ValueIndex = valueOptions.indexOf(card2.value)
     if(card1ValueIndex > card2ValueIndex){
-        console.log('card1 is winner ')
+        return   ` "card1 is winner" `
     }else if(card1ValueIndex < card2ValueIndex){
-        console.log('card2 is the winner')
+        return  ` "card2 is winner" `
     }else {
-        console.log(" tie" )
+        return ` "it's tie" `
     }
-    
 }
-const card3 = {
-    value: "7"
-}
-const card4 ={
-    value: "2"
-}
-determineCardWinner(card3, card4)
 
 
-// const header = document.getElementById("header")
-// const remainingText = document.getElementById("remaining")
+
 // const computerScoreEl = document.getElementById("computer-score")
 // const myScoreEl = document.getElementById("my-score")
 
-// function handleClick() {
-//     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
-//         .then(res => res.json())
-//         .then(data => {
-//             remainingText.textContent = `Remaining cards: ${data.remaining}`
-//             deckId = data.deck_id
-//             console.log(deckId)
-//         })
-// }
-
-// newDeckBtn.addEventListener("click", handleClick)
 
 // drawCardBtn.addEventListener("click", () => {
 //     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
