@@ -37,10 +37,15 @@ drawCardbutton.addEventListener("click", function(){
      
      if(data.remaining === 0 ){
          drawCardbutton.disabled = true
+     }if(computerScore > myScore){
+        headerh2.textContent = ` "Computer winns" `
+     }else if(myScore > computerScore){
+        headerh2.textContent = ` "You are the winner" `
+     }else{
+        ` "War" `
      }
     })
 })
-
 function determineCardWinner(card1, card2){
     const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", 
                         "10", "JACK", "QUEEN", "KING", "ACE"]
@@ -56,34 +61,6 @@ function determineCardWinner(card1, card2){
         myScoreEl.textContent = `My score: ${myScore}`
         return  ` "You are the winner" `
     }else {
-        return ` "War" `
+        return ` "It's a tie game!" `
     }
 }
-
-
-// drawCardBtn.addEventListener("click", () => {
-//     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
-//         .then(res => res.json())
-//         .then(data => {
-//             remainingText.textContent = `Remaining cards: ${data.remaining}`
-//             cardsContainer.children[0].innerHTML = `
-//                 <img src=${data.cards[0].image} class="card" />
-//             `
-//             cardsContainer.children[1].innerHTML = `
-//                 <img src=${data.cards[1].image} class="card" />
-//             `
-//             const winnerText = determineCardWinner(data.cards[0], data.cards[1])
-//             header.textContent = winnerText
-            
-//             if (data.remaining === 0) {
-//                 drawCardBtn.disabled = true
-//                 if (computerScore > myScore) {
-//                     header.textContent = "The computer won the game!"
-//                 } else if (myScore > computerScore) {
-//                     header.textContent = "You won the game!"
-//                 } else {
-//                     header.textContent = "It's a tie game!"
-//                 }
-//             }
-//         })
-// })
