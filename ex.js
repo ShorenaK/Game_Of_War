@@ -2,7 +2,7 @@
 
 function filterArray(array, callback){
     const resultingArray = []
-c style for loope 
+// c style for loope 
     for (let i = 0 ; i < array.length; i ++){
        const result =  callback(array[i])
        if(result){
@@ -21,10 +21,32 @@ const peoplewithPets = filterArray(people,function (person){
 console.log(peoplewithPets)
 
 
-
 const promis = fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
 console.log(promis)
+const people =[
+    { name: "Jack", hasPet: true },
+    { name: "Jill", hasPet: false },
+    { name: "Alice", hasPet: true },
+    { name: "Bob", hasPet: false },
+]
 
+function filterArray(array, callback){
+    const newArray = []
+    // updated for loope 
+    for (let item in array) { 
+    const shoulBeIncluded = callback(item)
+       if(shoulBeIncluded){
+      newArray.push(item)  
+    }
+}
+    return newArray
+}
+
+const result = filterArray(people, person =>{
+    return person.hasPet === true 
+})
+
+console.log(result)
 
 const voters = [
     {name: "Joe", email: "joe@joe.com", voted: true},

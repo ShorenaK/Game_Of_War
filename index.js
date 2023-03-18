@@ -9,7 +9,7 @@ function handleClick(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
     
     .then((res)=> res.json())
-    .then((data) => { console.log(data)
+    .then((data) => { 
       deckId = data.deck_id
      } )
 }
@@ -27,33 +27,6 @@ drawCardbutton.addEventListener("click", function(){
      `   
     })
 })
-
-
-const people =[
-    { name: "Jack", hasPet: true },
-    { name: "Jill", hasPet: false },
-    { name: "Alice", hasPet: true },
-    { name: "Bob", hasPet: false },
-]
-
-function filterArray(array, callback){
-    const newArray = []
-    // updated for loope 
-    for (let item in array) { 
-    const shoulBeIncluded = callback(item)
-       if(shoulBeIncluded){
-      newArray.push(item)  
-    }
-}
-    return newArray
-}
-
-const result = filterArray(people, person =>{
-    return person.hasPet === true 
-})
-
-console.log(result)
-
 
 
 
