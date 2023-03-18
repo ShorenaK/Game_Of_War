@@ -34,21 +34,20 @@ function determineCardWinner(card1, card2){
                         "10", "JACK", "QUEEN", "KING", "ACE"]
     const card1ValueIndex = valueOptions.indexOf(card1.value)
     const card2ValueIndex = valueOptions.indexOf(card2.value)
-    // if(card1ValueIndex < card1ValueIndex){
-    //     console.log('you are the winner ')
-    // }else if(card1ValueIndex > card2ValueIndex){
-    //     console.log('it s time')
-    // }else if(card1ValueIndex === card2ValueIndex){
-
-    // }
-    console.log("card 1:", card1ValueIndex)
-    console.log("card 2:", card2ValueIndex)
+    if(card1ValueIndex > card2ValueIndex){
+        console.log('card1 is winner ')
+    }else if(card1ValueIndex < card2ValueIndex){
+        console.log('card2 is the winner')
+    }else {
+        console.log(" tie" )
+    }
+    
 }
 const card3 = {
-    value: "2"
+    value: "7"
 }
 const card4 ={
-    value: "3"
+    value: "2"
 }
 determineCardWinner(card3, card4)
 
