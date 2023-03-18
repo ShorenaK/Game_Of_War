@@ -35,6 +35,9 @@ drawCardbutton.addEventListener("click", function(){
      `   
      headerh2.textContent = determineCardWinner(data.cards[0], data.cards[1])
      
+     if(data.remaining === 0 ){
+         drawCardbutton.disabled = true
+     }
     })
 })
 
@@ -44,9 +47,7 @@ function determineCardWinner(card1, card2){
     const card1ValueIndex = valueOptions.indexOf(card1.value)
     const card2ValueIndex = valueOptions.indexOf(card2.value)
     
-    if(data.remaining === 0 ){
-        drawCardbutton.disabled = true
-    }if(card1ValueIndex > card2ValueIndex){
+   if(card1ValueIndex > card2ValueIndex){
         return   ` "card1 is winner" `
     }else if(card1ValueIndex < card2ValueIndex){
         return  ` "card2 is winner" `
