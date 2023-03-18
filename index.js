@@ -1,4 +1,6 @@
 let deckId
+let myScore = 0 
+let computerScore = 0 
 // let deckId  either or will work. 
 
 let newDeckbutton = document.getElementById("new-deck")
@@ -27,15 +29,30 @@ drawCardbutton.addEventListener("click", function(){
      `   
     })
 })
+function determineCardWinner(card1, card2){
+    const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", 
+                        "10", "JACK", "QUEEN", "KING", "ACE"]
+    const card1ValueIndex = valueOptions.indexOf(card1.value)
+    const card2ValueIndex = valueOptions.indexOf(card2.value)
+    // if(card1ValueIndex < card1ValueIndex){
+    //     console.log('you are the winner ')
+    // }else if(card1ValueIndex > card2ValueIndex){
+    //     console.log('it s time')
+    // }else if(card1ValueIndex === card2ValueIndex){
+
+    // }
+    console.log("card 1:", card1ValueIndex)
+    console.log("card 2:", card2ValueIndex)
+}
+const card3 = {
+    value: "2"
+}
+const card4 ={
+    value: "3"
+}
+determineCardWinner(card3, card4)
 
 
-
-// let deckId
-// let computerScore = 0
-// let myScore = 0
-// const cardsContainer = document.getElementById("cards")
-// const newDeckBtn = document.getElementById("new-deck")
-// const drawCardBtn = document.getElementById("draw-cards")
 // const header = document.getElementById("header")
 // const remainingText = document.getElementById("remaining")
 // const computerScoreEl = document.getElementById("computer-score")
